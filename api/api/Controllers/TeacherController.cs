@@ -21,9 +21,9 @@ namespace api.Controllers
             _context = context;
         }
 
-        // GET: api/TeacherModels
+        // GET: api/Teacher
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TeacherModel>>> GetTeacher()
+        public async Task<ActionResult<IEnumerable<TeacherModel>>> GetTeachersList()
         {
           if (_context.Teacher == null)
           {
@@ -32,9 +32,9 @@ namespace api.Controllers
             return await _context.Teacher.ToListAsync();
         }
 
-        // GET: api/TeacherModels/5
+        // GET: api/Teacher/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<TeacherModel>> GetTeacherModel(string id)
+        public async Task<ActionResult<TeacherModel>> GetTeacher(string id)
         {
           if (_context.Teacher == null)
           {
@@ -50,10 +50,10 @@ namespace api.Controllers
             return teacherModel;
         }
 
-        // PUT: api/TeacherModels/5
+        // PUT: api/Teacher/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutTeacherModel(string id, TeacherModel teacherModel)
+        public async Task<IActionResult> UpdateTeacher(string id, TeacherModel teacherModel)
         {
             if (id != teacherModel.Id)
             {
@@ -81,10 +81,10 @@ namespace api.Controllers
             return NoContent();
         }
 
-        // POST: api/TeacherModels
+        // POST: api/Teacher
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<TeacherModel>> PostTeacherModel(TeacherModel teacherModel)
+        public async Task<ActionResult<TeacherModel>> CreateTeacher(TeacherModel teacherModel)
         {
           if (_context.Teacher == null)
           {
@@ -93,12 +93,12 @@ namespace api.Controllers
             _context.Teacher.Add(teacherModel);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetTeacherModel", new { id = teacherModel.Id }, teacherModel);
+            return NoContent();
         }
 
-        // DELETE: api/TeacherModels/5
+        // DELETE: api/Teacher/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTeacherModel(string id)
+        public async Task<IActionResult> DeleteTeacher(string id)
         {
             if (_context.Teacher == null)
             {

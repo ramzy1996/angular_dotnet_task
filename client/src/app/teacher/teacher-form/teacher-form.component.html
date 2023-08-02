@@ -1,0 +1,10 @@
+<form class="row" [formGroup]="service.teacherForm" (submit)="onSubmit()" [class.submitted]="submitted">
+    <div class="col-md-12 mb-3">
+        <label for="teacherName" class="form-label">Teacher Name</label>
+        <input name="teacherName" class="form-control form-control-lg" id="teacherName"
+            placeholder="Enter teacher's name" formControlName="teacherName" />
+    </div>
+    <div class="col-md-12 d-grid">
+        <button class="btn btn-lg btn-primary" type="submit">Submit</button>
+    </div>
+</form>
